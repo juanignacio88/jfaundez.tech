@@ -1,0 +1,301 @@
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
+
+(async () => {
+    console.log("Iniciando generación de Manual de Marca PDF...");
+
+    const htmlContent = `
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+            
+            * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            
+            body {
+                background: #0a0a0f;
+                font-family: 'Inter', sans-serif;
+                color: #ffffff;
+            }
+
+            /* A4 Page dimensions */
+            .page {
+                width: 210mm;
+                height: 297mm;
+                padding: 20mm;
+                position: relative;
+                page-break-after: always;
+                background-color: #0a0a0f;
+                background-image: radial-gradient(circle at top right, rgba(142,45,226,0.1) 0%, transparent 40%),
+                                  radial-gradient(circle at bottom left, rgba(0,242,254,0.1) 0%, transparent 40%);
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .grid-bg {
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-size: 30px 30px;
+                background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                                  linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+                z-index: 0;
+            }
+
+            .content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
+
+            /* Typography */
+            h1, h2, h3, .brand {
+                font-family: 'Outfit', sans-serif;
+            }
+
+            .brand-text {
+                font-size: 4rem;
+                font-weight: 900;
+                letter-spacing: -2px;
+            }
+            .brand-text .dot { color: #00f2fe; }
+            
+            h2 { font-size: 2.5rem; color: #fff; margin-bottom: 20mm; font-weight: 700; }
+            h3 { font-size: 1.5rem; margin-bottom: 5mm; color: #00f2fe; }
+            p { font-size: 1.1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 5mm; }
+
+            /* Color Swatches */
+            .colors-grid {
+                display: flex; gap: 10mm; flex-wrap: wrap; margin-top: 10mm;
+            }
+            .color-box {
+                width: 45mm; height: 60mm; border-radius: 15px; padding: 5mm;
+                display: flex; flex-direction: column; justify-content: flex-end;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+            .color-box.cyan { background: #00f2fe; color: #000; }
+            .color-box.purple { background: #8e2de2; color: #fff; }
+            .color-box.dark { background: #0f172a; color: #fff; }
+            .color-box.white { background: #f8fafc; color: #000; }
+            .color-hex { font-weight: 700; font-size: 1.2rem; font-family: 'Outfit'; }
+            .color-name { font-size: 0.9rem; opacity: 0.8; }
+
+            /* Typography Scale */
+            .typo-sample {
+                background: rgba(255,255,255,0.03);
+                border: 1px solid rgba(255,255,255,0.05);
+                padding: 10mm;
+                border-radius: 15px;
+                margin-bottom: 10mm;
+            }
+            .typo-outfit { font-family: 'Outfit'; font-size: 3rem; font-weight: 700; line-height: 1; margin-bottom: 10px; color: #fff; }
+            .typo-inter { font-family: 'Inter'; font-size: 1.2rem; font-weight: 300; line-height: 1.5; color: #94a3b8; }
+
+            /* UI Elements */
+            .glass-panel-sample {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 20px;
+                padding: 15mm;
+                margin-bottom: 10mm;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            .btn-sample {
+                padding: 15px 30px;
+                background: linear-gradient(135deg, #00f2fe, #8e2de2);
+                border-radius: 50px;
+                color: white;
+                font-weight: 600;
+                display: inline-block;
+                border: none;
+                margin-top: 10px;
+            }
+            
+            .text-gradient {
+                background: linear-gradient(135deg, #00f2fe, #8e2de2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .footer-line {
+                margin-top: auto;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding-top: 5mm;
+                font-size: 0.8rem;
+                color: #64748b;
+                display: flex;
+                justify-content: space-between;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- PAGE 1: COVER -->
+        <div class="page" style="justify-content: center; align-items: center; text-align: center;">
+            <div class="grid-bg"></div>
+            <div class="content" style="justify-content: center;">
+                <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #00f2fe, #8e2de2); margin: 0 auto 30px; display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: bold; font-family: 'Outfit'; box-shadow: 0 20px 50px rgba(142,45,226,0.3);">
+                    jf
+                </div>
+                <div class="brand-text" style="font-size: 5rem;">jfaundez<span class="dot">.tech</span></div>
+                <p style="font-size: 1.5rem; color: #fff; margin-top: 10px; font-weight: 300;">Soluciones Tecnológicas 360°</p>
+                <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+                    <p style="color: #00f2fe; font-weight: bold; letter-spacing: 2px;">BRAND GUIDELINES 2026</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: CONCEPTO -->
+        <div class="page">
+            <div class="grid-bg"></div>
+            <div class="content">
+                <h2>1. Identidad de Marca</h2>
+                
+                <div class="glass-panel-sample">
+                    <h3>El Concepto</h3>
+                    <p>La marca <b>jfaundez.tech</b> representa la conjunción de tecnología avanzada, estructuración de datos y diseño impecable. Creada para transmitir profesionalismo, eficiencia operativa y vanguardia digital.</p>
+                </div>
+
+                <div class="glass-panel-sample">
+                    <h3>Voz y Tono</h3>
+                    <p>El tono de comunicación es <b>Técnico, Directo y Elegante</b>. Hablamos en primera persona para crear cercanía ("Diseño", "Construyo"), pero mantenemos un léxico estrictamente profesional orientado a empresas y conversión.</p>
+                </div>
+
+                <div class="glass-panel-sample" style="border-left: 4px solid #00f2fe;">
+                    <h3>Misión Principal</h3>
+                    <p>"No te limites a usar la tecnología, impleméntala en tu flujo de trabajo para ganar tiempo y reducir errores."</p>
+                </div>
+
+                <div class="footer-line">
+                    <span>jfaundez.tech Brand Guidelines</span>
+                    <span>02</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: COLORES -->
+        <div class="page">
+            <div class="grid-bg"></div>
+            <div class="content">
+                <h2>2. Paleta de Colores</h2>
+                <p>La paleta de colores evoca un ecosistema digital puro ("Cyber-Tech"). Utilizamos oscuros profundos para reducir fatiga visual y destacar intensamente los colores primarios de acento a través de brillos (Glows).</p>
+                
+                <div class="colors-grid">
+                    <div class="color-box cyan">
+                        <span class="color-name">Tono Acento Primario</span>
+                        <span class="color-hex">#00f2fe</span>
+                    </div>
+                    <div class="color-box purple">
+                        <span class="color-name">Tono Acento Secundario</span>
+                        <span class="color-hex">#8e2de2</span>
+                    </div>
+                    <div class="color-box dark">
+                        <span class="color-name">Fondo Principal (Void)</span>
+                        <span class="color-hex">#0a0a0f</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 20mm;">El Gradiente "Hyper-Tech"</h3>
+                <div style="height: 30mm; width: 100%; border-radius: 15px; background: linear-gradient(135deg, #00f2fe, #8e2de2); box-shadow: 0 10px 30px rgba(142,45,226,0.3); margin-top: 5mm;"></div>
+                <p style="margin-top: 5mm;">Se utiliza únicamente para elementos interactivos primarios como call-to-actions, máscaras de recortes de fotografías de perfil e íconos vectores de Inteligencia Artificial.</p>
+
+                <div class="footer-line">
+                    <span>jfaundez.tech Brand Guidelines</span>
+                    <span>03</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: TIPOGRAFÍA -->
+        <div class="page">
+            <div class="grid-bg"></div>
+            <div class="content">
+                <h2>3. Tipografía</h2>
+                <p>Dos familias tipográficas de Google Fonts definen el carácter de la marca. <b>Outfit</b> entrega un peso geométrico agresivo y moderno para los títulos, mientras <b>Inter</b> garantiza legibilidad clínica en la interfaz.</p>
+                
+                <div class="typo-sample">
+                    <h3 style="color: #fff; margin-bottom: 2mm; font-size: 1rem; opacity: 0.5;">TÍTULOS Y LOGO</h3>
+                    <div class="typo-outfit">Outfit Bold / Black</div>
+                    <p style="margin: 0;">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>0 1 2 3 4 5 6 7 8 9 ! & @ #</p>
+                </div>
+
+                <div class="typo-sample">
+                    <h3 style="color: #fff; margin-bottom: 2mm; font-size: 1rem; opacity: 0.5;">CUERPO Y PÁRRAFOS</h3>
+                    <div class="typo-inter">Inter Light / Regular</div>
+                    <p style="margin: 0;">a b c d e f g h i j k l m n o p q r s t u v w x y z<br>0 1 2 3 4 5 6 7 8 9 ? . , : ;</p>
+                </div>
+                
+                <h3 style="margin-top: 10mm; margin-bottom: 10mm;">Jerarquía Visual</h3>
+                <h1 style="font-size: 3.5rem; margin-bottom: 5mm;">Encabezado H1 <span class="text-gradient">Destacado</span></h1>
+                <h2 style="font-size: 2rem; margin-bottom: 5mm; color:#e2e8f0;">Subtítulos de Sección H2</h2>
+                <p>Párrafo estándar Inter Regular 1.1rem color Gris Pizarra (#94a3b8) utilizado extensivamente en descripciones y tarjetas de la grid estructural (Bento UI).</p>
+
+                <div class="footer-line">
+                    <span>jfaundez.tech Brand Guidelines</span>
+                    <span>04</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 5: ESTADO DEL ARTE Y UI -->
+        <div class="page">
+            <div class="grid-bg"></div>
+            <div class="content">
+                <h2>4. Sistema de UI</h2>
+                <p>El proyecto jfaundez.tech utiliza fuertemente el patron arquitectónico de CSS conocido como <b>Glassmorphism</b> y componentes <b>Bento Grid</b>.</p>
+                
+                <div style="display: flex; gap: 10mm; margin-top: 10mm;">
+                    <div class="glass-panel-sample" style="flex: 1;">
+                        <h3 style="color: #fff;">Glass Panel</h3>
+                        <p style="font-size: 0.9rem;">Contenedores semitransparentes que flotan sobre grillas vectorizadas y difuminan la luz posterior (backdrop-filter: blur).</p>
+                    </div>
+                    
+                    <div class="glass-panel-sample" style="flex: 1;">
+                        <h3 style="color: #fff;">Border Radius</h3>
+                        <p style="font-size: 0.9rem;">Todas las esquinas de los componentes principales mantienen un corte suave perimetral (50px botones, 20px páneles).</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 10mm;">Controles de Acción (Botones)</h3>
+                <div style="display: flex; gap: 5mm; align-items: center; margin-top: 5mm;">
+                    <div class="btn-sample">Comenzar Proyecto</div>
+                    <div class="btn-sample" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;">Botón Secundario</div>
+                </div>
+
+                <div class="footer-line">
+                    <span>jfaundez.tech Brand Guidelines</span>
+                    <span>05</span>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    </html>
+    `;
+
+    // Ensure directory exists
+    const savePath = path.resolve(__dirname, 'branding_jfaundez_tech.pdf');
+    const htmlPath = path.resolve(__dirname, 'branding_jfaundez_tech.html');
+
+    // Save HTML version too for the user to view directly
+    fs.writeFileSync(htmlPath, htmlContent);
+    console.log("HTML version saved.");
+
+    // PDF Generation
+    const browser = await puppeteer.launch({ headless: 'new' });
+    const page = await browser.newPage();
+    
+    // We inject HTML directly
+    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+    
+    // Convert to PDF
+    await page.pdf({ 
+        path: savePath, 
+        format: 'A4', 
+        printBackground: true 
+    });
+
+    console.log('PDF de Manual de Marca generado en:', savePath);
+    await browser.close();
+})();

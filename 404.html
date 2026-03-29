@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Ruta no encontrada | jfaundez.tech</title>
+    <meta name="robots" content="noindex, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0f;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background-image: radial-gradient(circle at top right, rgba(142, 45, 226, 0.15) 0%, transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(0, 242, 254, 0.15) 0%, transparent 40%);
+        }
+        .error-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            animation: fadeIn 1s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .code {
+            font-family: 'Outfit', sans-serif;
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0;
+            background: linear-gradient(135deg, #00f2fe, #8e2de2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+        }
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #e2e8f0;
+        }
+        p {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        .btn-home {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 242, 254, 0.1);
+            color: #00f2fe;
+            border: 1px solid rgba(0, 242, 254, 0.4);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-home:hover {
+            background: rgba(0, 242, 254, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="code">404</h1>
+        <h2>Conexión Perdida</h2>
+        <p>El enlace que seguiste parece estar roto, o la página fue movida al vacío digital.</p>
+        <a href="/" class="btn-home">Regresar al Servidor Principal</a>
+    </div>
+</body>
+</html>
