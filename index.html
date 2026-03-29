@@ -106,7 +106,8 @@
                     <div class="icon-header">
                         <i class="fas fa-laptop-code accent-icon"></i>
                     </div>
-                    <h2 class="service-title">Desarrollo Web & <span class="highlight">E-commerce</span></h2>
+                    <h2 class="service-title" style="color: #ffffff;">Desarrollo Web & E-commerce</h2>
+                    <h3 style="font-size: 1.6rem; color: var(--text-secondary); margin-bottom: 1.5rem; margin-top: -10px; font-weight: 500;">Diseños potenciados con <span class="text-gradient" style="font-weight: 900; font-size: 1.2em; text-shadow: 0 0 15px rgba(0, 242, 254, 0.5);">IA</span></h3>
                     <p class="service-desc">Construyo plataformas de alto rendimiento, escalables y orientadas a la conversión. Interfaces sorprendentes y código optimizado para destacar tu marca online.</p>
                     <div class="tech-stack">
                         <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
@@ -234,8 +235,38 @@
     </section>
 
     <!-- Automatización con IA -->
-    <section class="service-section" id="ai">
-        <div class="container">
+    <section class="service-section" id="ai" style="position: relative; overflow: hidden;">
+        <!-- Vector Neural Network Decor -->
+        <div class="neural-network-decor">
+            <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="40" y1="50" x2="100" y2="30" stroke="url(#nn-grad)" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+                <line x1="40" y1="50" x2="120" y2="100" stroke="url(#nn-grad)" stroke-width="2" opacity="0.6"/>
+                <line x1="40" y1="50" x2="80" y2="150" stroke="url(#nn-grad)" stroke-width="2" opacity="0.4"/>
+                <line x1="40" y1="130" x2="100" y2="30" stroke="url(#nn-grad)" stroke-width="2" opacity="0.3"/>
+                <line x1="40" y1="130" x2="120" y2="100" stroke="url(#nn-grad)" stroke-width="2" opacity="0.7"/>
+                <line x1="40" y1="130" x2="80" y2="150" stroke="url(#nn-grad)" stroke-width="2" opacity="0.6"/>
+                <line x1="100" y1="30" x2="170" y2="90" stroke="url(#nn-grad)" stroke-width="3" opacity="0.8"/>
+                <line x1="120" y1="100" x2="170" y2="90" stroke="url(#nn-grad)" stroke-width="3" opacity="0.9"/>
+                <line x1="80" y1="150" x2="170" y2="90" stroke="url(#nn-grad)" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+                
+                <circle cx="40" cy="50" r="10" fill="#0f172a" stroke="#00f2fe" stroke-width="3"/>
+                <circle cx="40" cy="130" r="10" fill="#0f172a" stroke="#00f2fe" stroke-width="3"/>
+                <circle cx="100" cy="30" r="14" fill="#0f172a" stroke="#8e2de2" stroke-width="4"/>
+                <circle cx="120" cy="100" r="14" fill="#0f172a" stroke="#8e2de2" stroke-width="4"/>
+                <circle cx="80" cy="150" r="12" fill="#0f172a" stroke="#00f2fe" stroke-width="3"/>
+                <circle cx="170" cy="90" r="18" fill="url(#nn-grad)" filter="drop-shadow(0px 0px 10px rgba(142,45,226,0.8))"/>
+                <path d="M160 90 L168 82 L172 98 L180 90" stroke="#fff" stroke-width="2" fill="none"/>
+                
+                <defs>
+                    <linearGradient id="nn-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f2fe"/>
+                        <stop offset="100%" stop-color="#8e2de2"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="container" style="position: relative; z-index: 2;">
             <div class="section-header text-center">
                 <h2 class="section-title">Automatización con <span class="text-gradient">Inteligencia Artificial</span>: Estructura y Eficiencia</h2>
                 <p class="section-subtitle lg-sub">No te limites a usar la IA, impleméntala en tu flujo de trabajo para ganar tiempo y reducir errores. Ayudo a empresas y profesionales a integrar la Inteligencia Artificial en sus procesos diarios, logrando una mayor eficiencia operativa.</p>
