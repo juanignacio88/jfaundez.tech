@@ -629,6 +629,47 @@ h1, h2, h3, h4 {
     background: rgba(0, 242, 254, 0.05);
 }
 
+/* Expandable badges on hover (Desktop only) */
+.badge-expandable {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    cursor: default;
+}
+
+.badge-expandable .badge-title {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.badge-expandable .badge-desc {
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.5s ease, opacity 0.5s ease, margin-left 0.5s ease;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+@media (min-width: 993px) {
+    .badge-expandable:hover {
+        padding-right: 1.5rem;
+    }
+    .badge-expandable:hover .badge-desc {
+        max-width: 300px;
+        opacity: 1;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 992px) {
+    .badge-expandable .badge-desc {
+        display: none !important;
+    }
+}
+
 .feature-list {
     list-style: none;
 }
