@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="dark-theme">
+
+    <!-- Sticky Header Logo -->
+    <a href="#hero" id="sticky-logo" class="sticky-logo" aria-label="Volver al inicio">
+        <span class="brand-text">jfaundez<span class="dot">.tech</span></span>
+    </a>
     
     <!-- Fixed Top Button -->
     <button class="fixed-contact-btn btn-contact-trigger">
@@ -21,9 +26,10 @@
         <div class="hero-v4-container container">
             
             <div class="hero-v4-text">
-                <div class="hero-brand" style="margin-bottom: 2rem;">
+                <div class="hero-brand" style="margin-bottom: 1.5rem;">
                     <span class="brand-text" style="font-size: 2.2rem;">jfaundez<span class="dot">.tech</span></span>
                 </div>
+                <div class="hero-badge">Ing. en Computación e Informática</div>
                 
                 <h1 class="hero-v4-title">Soluciones<br>Tecnológicas<br><span class="text-gradient">360°</span></h1>
                 <p class="hero-v4-subtitle">Experto en Desarrollo Web, Estrategia de Datos, Inteligencia Artificial y Soluciones de Hardware.</p>
@@ -37,6 +43,15 @@
                 <div class="image-mask">
                     <img src="assets/img/perfil.png" alt="jfaundez.tech Perfil" class="v4-profile-img">
                 </div>
+                
+                <div class="hero-quick-nav">
+                    <div class="quick-nav-links">
+                        <a href="#web" class="quick-link"><i class="fas fa-laptop-code"></i> Web</a>
+                        <a href="#marketing" class="quick-link"><i class="fas fa-chart-line"></i> Marketing</a>
+                        <a href="#ai" class="quick-link"><i class="fas fa-robot"></i> IA</a>
+                        <a href="#soporte" class="quick-link"><i class="fas fa-tools"></i> Soporte</a>
+                    </div>
+                </div>
                 <div class="floating-tech-element ft-1"><i class="fas fa-code"></i></div>
                 <div class="floating-tech-element ft-2"><i class="fas fa-robot"></i></div>
                 <div class="floating-tech-element ft-3"><i class="fas fa-chart-line"></i></div>
@@ -45,8 +60,8 @@
         </div>
         
         <a href="#web" class="scroll-down-btn" aria-label="Ir a sección Web">
-            <div class="mouse-icon"><div class="wheel"></div></div>
-            <span class="scroll-text-sm">Scroll</span>
+            <div class="tech-scroll-line"></div>
+            <span class="scroll-text-sm">Explorar</span>
         </a>
     </section>
 
@@ -55,13 +70,13 @@
         <button id="close-contact-panel" class="close-panel-btn"><i class="fas fa-times"></i></button>
         <div class="container">
             <div class="cta-card glass-panel">
-                <h2 class="section-title">Empresas e Innovadores: ¿Listos para llevar su tecnología al siguiente nivel?</h2>
-                <p class="section-subtitle">Sin intermediarios, directamente conmigo. Soluciones rápidas y efectivas en todos los frentes.</p>
+                <h2 class="section-title">¿Listo para hacer realidad tu próxima idea tecnológica?</h2>
+                <p class="section-subtitle">Descubre soluciones a tu medida. Trabajo directamente contigo para ofrecerte resultados rápidos y efectivos en todos los frentes.</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/569XXXXXXXX" class="btn btn-whatsapp btn-large">
+                    <a href="https://wa.me/569846753967" class="btn btn-whatsapp btn-large" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-whatsapp"></i> Contáctame por WhatsApp
                     </a>
-                    <a href="mailto:contacto@jfaundez.tech" class="btn btn-email btn-large">
+                    <a href="mailto:juanfaundezcastro@gmail.com" class="btn btn-email btn-large">
                         <i class="fas fa-envelope"></i> Envíame un Correo
                     </a>
                 </div>
@@ -83,6 +98,7 @@
                         <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
                         <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
                         <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="tech-badge"><i class="fab fa-react"></i> React</span>
                         <span class="tech-badge"><i class="fab fa-wordpress"></i> WordPress</span>
                         <span class="tech-badge"><i class="fab fa-shopify"></i> Shopify</span>
                     </div>
@@ -100,10 +116,68 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Proyectos Destacados Integrados en Desarrollo Web -->
+            <div class="section-header text-center" style="margin-top: 6rem;" id="portafolio">
+                <h2 class="section-title">Proyectos <span class="text-gradient">Destacados</span></h2>
+                <p class="section-subtitle lg-sub">Explora algunos de los trabajos recientes que he desarrollado, abarcando desde completas plataformas de comercio electrónico hasta landing pages corporativas de alto impacto.</p>
+            </div>
+            
+            <div class="bento-portfolio">
+                <!-- Zoffoli -->
+                <a href="https://zoffoliabogados.cl" target="_blank" rel="noopener noreferrer" class="portfolio-card card-zoffoli glass-panel hover-glow">
+                    <div class="card-bg"></div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-badge">Web Corporativa</span>
+                        <h3>Zoffoli Abogados</h3>
+                        <span class="view-link">Visitar Sitio <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- NewOpenBox -->
+                <a href="https://newopenbox.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-card card-newopenbox glass-panel hover-glow">
+                    <div class="card-bg"></div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-badge">Diseño Comercial</span>
+                        <h3>NewOpenBox</h3>
+                        <span class="view-link">Visitar Sitio <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Maske Opal -->
+                <a href="https://maske-opal.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-card card-maske glass-panel hover-glow">
+                    <div class="card-bg"></div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-badge">Catálogo Dinámico</span>
+                        <h3>Maske Medical</h3>
+                        <span class="view-link">Visitar Sitio <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Marilyn -->
+                <a href="https://marilyn.cl" target="_blank" rel="noopener noreferrer" class="portfolio-card card-marilyn glass-panel hover-glow">
+                    <div class="card-bg"></div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-badge">Landing Page</span>
+                        <h3>Marilyn</h3>
+                        <span class="view-link">Visitar Sitio <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Don Harina -->
+                <a href="https://donharina.cl" target="_blank" rel="noopener noreferrer" class="portfolio-card card-donharina glass-panel hover-glow">
+                    <div class="card-bg"></div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-badge">Landing Page / Alimentos</span>
+                        <h3>Don Harina</h3>
+                        <span class="view-link">Visitar Sitio <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
         </div>
         <a href="#marketing" class="scroll-down-btn" aria-label="Ir a sección Marketing">
-            <div class="mouse-icon"><div class="wheel"></div></div>
-            <span class="scroll-text-sm">Scroll</span>
+            <div class="tech-scroll-line"></div>
+            <span class="scroll-text-sm">Explorar</span>
         </a>
     </section>
 
@@ -140,8 +214,8 @@
             </div>
         </div>
         <a href="#ai" class="scroll-down-btn" aria-label="Ir a sección Inteligencia Artificial">
-            <div class="mouse-icon"><div class="wheel"></div></div>
-            <span class="scroll-text-sm">Scroll</span>
+            <div class="tech-scroll-line"></div>
+            <span class="scroll-text-sm">Explorar</span>
         </a>
     </section>
 
@@ -183,8 +257,8 @@
             </div>
         </div>
         <a href="#soporte" class="scroll-down-btn" aria-label="Ir a sección Soporte">
-            <div class="mouse-icon"><div class="wheel"></div></div>
-            <span class="scroll-text-sm">Scroll</span>
+            <div class="tech-scroll-line"></div>
+            <span class="scroll-text-sm">Explorar</span>
         </a>
     </section>
 
@@ -227,6 +301,7 @@
                     <a href="#web">Web</a>
                     <a href="#marketing">Datos & IA</a>
                     <a href="#soporte">Soporte</a>
+                    <a href="#portafolio">Portafolio</a>
                 </div>
             </div>
             <div class="footer-bottom">

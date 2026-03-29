@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Observe service sections
-    const serviceSections = document.querySelectorAll('.service-section .service-text, .service-section .service-visual, .ai-feature-card, .section-header');
+    const serviceSections = document.querySelectorAll('.service-section .service-text, .service-section .service-visual, .ai-feature-card, .section-header, .portfolio-card');
     serviceSections.forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
@@ -99,6 +99,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeContactBtn) {
         closeContactBtn.addEventListener('click', () => {
             contactPanel.classList.remove('active');
+        });
+    }
+
+    // Sticky Logo logic
+    const stickyLogo = document.getElementById('sticky-logo');
+    const webSection = document.getElementById('web');
+    
+    if (stickyLogo && webSection) {
+        window.addEventListener('scroll', () => {
+            const webRect = webSection.getBoundingClientRect();
+            // Show the sticky logo once the top of #web reaches the viewport (or scrolls past it)
+            if (webRect.top <= 100) {
+                stickyLogo.classList.add('visible');
+            } else {
+                stickyLogo.classList.remove('visible');
+            }
         });
     }
 });
