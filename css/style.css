@@ -629,6 +629,14 @@ h1, h2, h3, h4 {
     background: rgba(0, 242, 254, 0.05);
 }
 
+/* Marketing Stack Fix for Jittering Tooltips */
+@media (min-width: 993px) {
+    .marketing-stack {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 /* Expandable badges on hover (Desktop only) */
 .badge-expandable {
     flex-wrap: nowrap;
