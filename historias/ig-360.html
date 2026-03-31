@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia jfaundez.tech - IG 360</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #050508;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --accent-cyan: #00f2fe;
+            --accent-purple: #8e2de2;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: var(--font-body);
+        }
+
+        .story-wrapper {
+            width: 405px;
+            height: 720px;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .story-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20%; left: -10%; width: 140%; height: 140%;
+            background: radial-gradient(circle at 70% 20%, rgba(142, 45, 226, 0.15), transparent 40%),
+                        radial-gradient(circle at 30% 80%, rgba(0, 242, 254, 0.15), transparent 40%);
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .brand {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        .brand .dot { color: var(--accent-cyan); }
+
+        .hook {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .sub-hook {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .visual-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .glass-icon {
+            background: var(--glass-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            position: absolute;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .icon-main {
+            width: 100px; height: 100px;
+            font-size: 3rem;
+            color: var(--text-primary);
+            border-color: rgba(142, 45, 226, 0.4);
+            box-shadow: 0 0 30px rgba(142, 45, 226, 0.2);
+            z-index: 3;
+        }
+
+        .icon-sub1 { width: 60px; height: 60px; font-size: 1.5rem; color: var(--accent-cyan); top: 5%; right: 15%; animation-delay: -1.5s; }
+        .icon-sub2 { width: 50px; height: 50px; font-size: 1.2rem; color: #ffcf00; bottom: 10%; left: 20%; animation-delay: -3s; }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .body-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: auto;
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .services-list {
+            text-align: left;
+            margin: 1rem auto 0;
+            width: fit-content;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        .services-list p { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .services-list i { color: var(--accent-cyan); }
+
+        .footer-space {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-bottom: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+        }
+        
+        .swipe-indicator {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--accent-purple);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .swipe-indicator i {
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    </style>
+</head>
+<body>
+
+    <div class="story-wrapper">
+        <div class="content">
+            <div class="brand">jfaundez<span class="dot">.tech</span></div>
+
+            <h1 class="hook">Dirigir un negocio ya es <span class="text-gradient">difícil.</span></h1>
+            <p class="sub-hook">No te compliques más con la tecnología.</p>
+
+            <div class="visual-center">
+                <div class="glass-icon icon-main"><i class="fas fa-layer-group"></i></div>
+                <div class="glass-icon icon-sub1"><i class="fas fa-robot"></i></div>
+                <div class="glass-icon icon-sub2"><i class="fas fa-laptop-code"></i></div>
+            </div>
+
+            <div class="body-text">
+                <p>Soy tu <strong>Aliado Tecnológico 360°</strong>. Centraliza todo:</p>
+                <div class="services-list">
+                    <p><i class="fas fa-check-circle"></i> Desarrollo Web & E-commerce</p>
+                    <p><i class="fas fa-check-circle"></i> Marketing de Datos</p>
+                    <p><i class="fas fa-check-circle"></i> Automatización con IA</p>
+                    <p><i class="fas fa-check-circle"></i> Soporte de TI Corporativo</p>
+                </div>
+            </div>
+
+            <div class="footer-space">
+                <div class="swipe-indicator">
+                    <i class="fas fa-chevron-up"></i>
+                    Conoce la Solución Integral
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">📍 Coloca el Sticker Link aquí arriba</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
