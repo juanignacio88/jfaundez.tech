@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Historias - jfaundez.tech</title>
+    <!-- Mismas fuentes globales -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #050508;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --accent-cyan: #00f2fe;
+            --accent-purple: #8e2de2;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            margin-bottom: 0.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0070f3, var(--accent-purple));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(142, 45, 226, 0.4);
+        }
+
+        /* Dashboard Oculto */
+        #dashboard {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .story-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .story-card i {
+            font-size: 3rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .story-card h3 {
+            font-family: var(--font-heading);
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--accent-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(142, 45, 226, 0.2);
+        }
+
+        #error-msg {
+            color: #ff4d4d;
+            font-size: 0.9rem;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Login -->
+    <div id="login-screen" class="glass-panel">
+        <h1>Portal <span class="text-gradient">Privado</span></h1>
+        <p>Repositorio de Historias de jfaundez.tech</p>
+        
+        <input type="password" id="password" placeholder="Ingresa tu clave secreta" onkeypress="if(event.key === 'Enter') checkPassword()">
+        <p id="error-msg">Clave incorrecta. Intenta de nuevo.</p>
+        <button onclick="checkPassword()">Acceder</button>
+    </div>
+
+    <!-- Dashboard Principal -->
+    <div id="dashboard">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>Mis <span class="text-gradient">Historias</span></h1>
+            <button onclick="logout()" style="width: auto; padding: 10px 20px; background: rgba(255,255,255,0.1);">Cerrar Sesión</button>
+        </div>
+        
+        <p>Abre el enlace de la historia que necesites desde tu computadora o celular para hacer la captura y publicarla.</p>
+
+        <div class="story-grid">
+            
+            <div class="story-card">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>WhatsApp Ventas</h3>
+                <p>Enfoque: E-commerce de alto impacto y conversión.</p>
+                <a href="whatsapp-ventas.html" target="_blank" class="btn-outline">Abrir Historia</a>
+            </div>
+
+            <div class="story-card">
+                <i class="fas fa-layer-group" style="color: #8e2de2;"></i>
+                <h3>WhatsApp Aliado 360</h3>
+                <p>Enfoque: Integrador integral de servicios digitales.</p>
+                <a href="whatsapp-360.html" target="_blank" class="btn-outline" style="border-color: var(--accent-cyan);">Abrir Historia</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Clave muy sencilla por ahora, ya que es contenido comercial de bajo riesgo
+        const SECRET_KEY = "digital2026";
+
+        // Revisar si ya está logueado en la sesión
+        if(sessionStorage.getItem('historias_auth') === 'true') {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+        }
+
+        function checkPassword() {
+            const pass = document.getElementById('password').value;
+            if (pass === SECRET_KEY) {
+                sessionStorage.setItem('historias_auth', 'true');
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                document.getElementById('error-msg').style.display = 'none';
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('historias_auth');
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'block';
+            document.getElementById('password').value = '';
+        }
+    </script>
+</body>
+</html>
