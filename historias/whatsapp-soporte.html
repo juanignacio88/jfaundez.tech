@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historia jfaundez.tech - WhatsApp 360</title>
+    <title>Historia jfaundez.tech - WhatsApp Soporte</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     
     <style>
         :root {
@@ -45,9 +46,9 @@
         .story-wrapper::before {
             content: '';
             position: absolute;
-            top: -20%; left: -10%; width: 140%; height: 140%;
-            background: radial-gradient(circle at 70% 20%, rgba(142, 45, 226, 0.15), transparent 40%),
-                        radial-gradient(circle at 30% 80%, rgba(0, 242, 254, 0.15), transparent 40%);
+            top: -10%; left: -20%; width: 150%; height: 150%;
+            background: radial-gradient(circle at 80% 30%, rgba(0, 242, 254, 0.15), transparent 40%),
+                        radial-gradient(circle at 20% 70%, rgba(142, 45, 226, 0.15), transparent 40%);
             z-index: 0;
         }
 
@@ -65,18 +66,18 @@
             font-size: 1.2rem;
             color: var(--text-primary);
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             opacity: 0.8;
         }
         .brand .dot { color: var(--accent-cyan); }
 
         .hook {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             line-height: 1.1;
             text-align: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
             color: white;
         }
         .text-gradient {
@@ -85,15 +86,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .sub-hook {
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
 
         .visual-center {
             flex: 1;
@@ -101,61 +93,45 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            margin: 1rem 0;
+            margin: 2rem 0;
         }
 
         .glass-icon {
+            width: 130px;
+            height: 130px;
             background: var(--glass-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.3);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 4rem;
+            color: var(--accent-cyan);
             backdrop-filter: blur(12px);
-            position: absolute;
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
             animation: float 4s ease-in-out infinite;
         }
 
-        .icon-main {
-            width: 100px; height: 100px;
-            font-size: 3rem;
-            color: var(--text-primary);
-            border-color: rgba(142, 45, 226, 0.4);
-            box-shadow: 0 0 30px rgba(142, 45, 226, 0.2);
-            z-index: 3;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
-
-        .icon-sub1 { width: 60px; height: 60px; font-size: 1.5rem; color: var(--accent-cyan); top: 5%; right: 15%; animation-delay: -1.5s; }
-        .icon-sub2 { width: 50px; height: 50px; font-size: 1.2rem; color: #ffcf00; bottom: 10%; left: 20%; animation-delay: -3s; }
-
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
         .body-text {
             color: var(--text-secondary);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             text-align: center;
             line-height: 1.5;
             margin-bottom: auto;
-            background: rgba(10, 10, 15, 0.6);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
         }
-        
-        .services-list {
-            text-align: left;
-            margin: 1rem auto 0;
-            width: fit-content;
-            font-size: 0.95rem;
+        .body-text strong {
             color: var(--text-primary);
+            font-weight: 600;
         }
-        .services-list p { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
-        .services-list i { color: var(--accent-cyan); }
 
         .footer-space {
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             padding-bottom: 1rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 1rem;
@@ -176,7 +152,11 @@
             font-size: 1.5rem;
             animation: bounce 2s infinite;
         }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
     </style>
 </head>
 <body>
@@ -184,32 +164,24 @@
     <div class="story-wrapper">
         <div class="content">
             <div class="brand">jfaundez<span class="dot">.tech</span></div>
-
-            <h1 class="hook">Dirigir un negocio ya es <span class="text-gradient">difícil.</span></h1>
-            <p class="sub-hook">No te compliques más con la tecnología.</p>
+            <h1 class="hook">¿Qué pasa cuando tu plataforma falla en el <span class="text-gradient">momento crítico</span>?</h1>
 
             <div class="visual-center">
-                <div class="glass-icon icon-main"><i class="fas fa-layer-group"></i></div>
-                <div class="glass-icon icon-sub1"><i class="fas fa-robot"></i></div>
-                <div class="glass-icon icon-sub2"><i class="fas fa-laptop-code"></i></div>
-            </div>
-
-            <div class="body-text">
-                <p>Soy tu <strong>Aliado Tecnológico 360°</strong>. Centraliza todo:</p>
-                <div class="services-list">
-                    <p><i class="fas fa-check-circle"></i> Desarrollo Web & E-commerce</p>
-                    <p><i class="fas fa-check-circle"></i> Marketing de Datos</p>
-                    <p><i class="fas fa-check-circle"></i> Automatización con IA</p>
-                    <p><i class="fas fa-check-circle"></i> Soporte de TI Corporativo</p>
+                <div class="glass-icon">
+                    <i class="fas fa-server"></i>
                 </div>
             </div>
+
+            <p class="body-text">
+                Profesionalizo la estabilidad de tu sistema. Me encargo de la <strong>resolución de bugs y optimización de código</strong> para que tu web o aplicación nunca deje de vender.
+            </p>
 
             <div class="footer-space">
                 <div class="swipe-indicator">
                     <i class="fas fa-reply"></i>
-                    Responde "360" aquí
+                    Responde "SOPORTE"
                 </div>
-                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">y coordinamos una consultoría gratis</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 5px;">y asegura la continuidad de tu negocio.</p>
             </div>
         </div>
     </div>
