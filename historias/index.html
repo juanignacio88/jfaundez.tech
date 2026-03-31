@@ -109,58 +109,67 @@
             padding: 2rem;
         }
 
-        .story-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .story-card {
+        /* Vista Tipo Explorador de Archivos */
+        .file-explorer {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            text-align: left;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .story-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-5px);
+        .file-explorer th {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .story-card i {
-            font-size: 3rem;
+        .file-explorer td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .file-explorer tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .file-explorer tr:last-child td {
+            border-bottom: none;
+        }
+
+        .file-link {
             color: var(--accent-cyan);
-            margin-bottom: 1rem;
-        }
-
-        .story-card h3 {
-            font-family: var(--font-heading);
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .story-card p {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 10px 20px;
-            background: transparent;
-            border: 1px solid var(--accent-purple);
-            color: white;
             text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 5px 12px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
             transition: all 0.3s ease;
         }
 
-        .btn-outline:hover {
-            background: rgba(142, 45, 226, 0.2);
+        .file-link:hover {
+            background: rgba(0, 242, 254, 0.2);
+            color: white;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 2.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
         }
 
         #error-msg {
@@ -188,50 +197,78 @@
     <!-- Dashboard Principal -->
     <div id="dashboard">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-            <h1>Mis <span class="text-gradient">Historias</span></h1>
+            <h1>Registro <span class="text-gradient">Histórico</span></h1>
             <button onclick="logout()" style="width: auto; padding: 10px 20px; background: rgba(255,255,255,0.1);">Cerrar Sesión</button>
         </div>
         
-        <p>Selecciona una plantilla. Estas historias están optimizadas según la plataforma (WhatsApp invita a responder, Instagram invita al enlace).</p>
+        <p>Añade aquí el registro de las plantillas (HTML) o imágenes (PNG/JPG) a medida que crees nuevas piezas visuales.</p>
 
         <!-- CATEGORÍA WHATSAPP -->
-        <h2 style="color: #25D366; font-family: var(--font-heading); font-size: 1.5rem; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; text-align: left;">
-            <i class="fab fa-whatsapp"></i> Historias WhatsApp
-        </h2>
-        <div class="story-grid">
-            <div class="story-card">
-                <i class="fas fa-shopping-cart" style="color: #25D366;"></i>
-                <h3>Ventas / E-commerce</h3>
-                <p>Enfoque: Conversión. Llama a responder "WEB".</p>
-                <a href="/historias/whatsapp-ventas.html" target="_blank" class="btn-outline" style="border-color: #25D366;">Abrir Historia</a>
-            </div>
-
-            <div class="story-card">
-                <i class="fas fa-layer-group" style="color: #25D366;"></i>
-                <h3>Aliado 360</h3>
-                <p>Enfoque: Integral. Llama a responder "360".</p>
-                <a href="/historias/whatsapp-360.html" target="_blank" class="btn-outline" style="border-color: #25D366;">Abrir Historia</a>
-            </div>
+        <div class="category-header" style="color: #25D366;">
+            <i class="fab fa-whatsapp"></i> Historias en WhatsApp
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="file-explorer">
+                <thead>
+                    <tr>
+                        <th>Nombre / Título</th>
+                        <th>Fecha Creación</th>
+                        <th>Tipo</th>
+                        <th>Tamaño</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>whatsapp-ventas.html</td>
+                        <td>31-Mar-2026</td>
+                        <td><i class="fab fa-html5" style="color:#e34c26"></i> Plantilla HTML</td>
+                        <td>4 KB</td>
+                        <td><a href="/historias/whatsapp-ventas.html" target="_blank" class="file-link">Visualizar</a></td>
+                    </tr>
+                    <tr>
+                        <td>whatsapp-360.html</td>
+                        <td>31-Mar-2026</td>
+                        <td><i class="fab fa-html5" style="color:#e34c26"></i> Plantilla HTML</td>
+                        <td>4 KB</td>
+                        <td><a href="/historias/whatsapp-360.html" target="_blank" class="file-link">Visualizar</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- CATEGORÍA INSTAGRAM -->
-        <h2 style="color: #E1306C; font-family: var(--font-heading); font-size: 1.5rem; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; text-align: left;">
-            <i class="fab fa-instagram"></i> Historias Instagram
-        </h2>
-        <div class="story-grid">
-            <div class="story-card">
-                <i class="fas fa-shopping-cart" style="color: #E1306C;"></i>
-                <h3>Ventas / E-commerce</h3>
-                <p>Enfoque: Conversión. Espacio inferior para Link.</p>
-                <a href="/historias/ig-ventas.html" target="_blank" class="btn-outline" style="border-color: #E1306C;">Abrir Historia</a>
-            </div>
-
-            <div class="story-card">
-                <i class="fas fa-layer-group" style="color: #E1306C;"></i>
-                <h3>Aliado 360</h3>
-                <p>Enfoque: Integral. Espacio inferior para Link.</p>
-                <a href="/historias/ig-360.html" target="_blank" class="btn-outline" style="border-color: #E1306C;">Abrir Historia</a>
-            </div>
+        <div class="category-header" style="color: #E1306C; margin-top: 3rem;">
+            <i class="fab fa-instagram"></i> Historias en Instagram
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="file-explorer">
+                <thead>
+                    <tr>
+                        <th>Nombre / Título</th>
+                        <th>Fecha Creación</th>
+                        <th>Tipo</th>
+                        <th>Tamaño</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ig-ventas.html</td>
+                        <td>31-Mar-2026</td>
+                        <td><i class="fab fa-html5" style="color:#e34c26"></i> Plantilla HTML</td>
+                        <td>4 KB</td>
+                        <td><a href="/historias/ig-ventas.html" target="_blank" class="file-link">Visualizar</a></td>
+                    </tr>
+                    <tr>
+                        <td>ig-360.html</td>
+                        <td>31-Mar-2026</td>
+                        <td><i class="fab fa-html5" style="color:#e34c26"></i> Plantilla HTML</td>
+                        <td>4 KB</td>
+                        <td><a href="/historias/ig-360.html" target="_blank" class="file-link">Visualizar</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
