@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Perfil WhatsApp - jfaundez.tech</title>
+    <!-- Mismas fuentes oficiales -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Lienzo cuadrado para perfil de WhatsApp */
+        .profile-canvas {
+            width: 500px;
+            height: 500px;
+            background-color: #050508; /* Dark mode de la web */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            /* Circulo guía opcional encendido si se comenta abajo */
+        }
+
+        /* Atmósfera sutil de color corporativo */
+        .profile-canvas::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.15) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .brand-text {
+            position: relative;
+            z-index: 2;
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.8rem; /* Escalado perfecto para no cortarse en Whatsapp */
+            font-weight: 900;
+            color: #f0f0f5;
+            text-align: center;
+            letter-spacing: -1.5px;
+        }
+
+        .brand-text .dot {
+            color: #00f2fe;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+        }
+
+        .instructions {
+            color: #a0a0b0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .instructions strong {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-canvas">
+        <span class="brand-text">jfaundez<span class="dot">.tech</span></span>
+    </div>
+    
+    <p class="instructions">
+        <i class="fas fa-crop-alt"></i> Usando recortes <strong>(Windows + Shift + S)</strong>, captura solo el cuadrado negro que ves arriba.<br>Al subirlo, el círculo propio de WhatsApp respetará este margen.
+    </p>
+
+</body>
+</html>
