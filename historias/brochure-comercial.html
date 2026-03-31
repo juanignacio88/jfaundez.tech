@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brochure Comercial - jfaundez.tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #050508;
+            --bg-alt: #0a0a0f;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --accent-cyan: #00f2fe;
+            --accent-purple: #8e2de2;
+            --accent-gold: #ffcf00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #222; /* Fondo del navegador oscuro */
+            color: #333; /* Texto por defecto si se ve en web (se sobreescribe abajo) */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        @media print {
+            body { background-color: transparent; padding: 0; }
+            .no-print { display: none !important; }
+            .page { box-shadow: none !important; margin: 0 !important; page-break-after: always; }
+        }
+
+        /* Botón de impresión/descarga */
+        .controls {
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-alt {
+            background: #ffffff;
+            color: #333;
+        }
+
+        /* Formato Hoja A4 Digital */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            margin: 0 auto 20mm;
+            padding: 20mm;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Atmosfera Brand */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 100% 0%, rgba(0, 242, 254, 0.1), transparent 40%),
+                        radial-gradient(circle at 0% 100%, rgba(142, 45, 226, 0.08), transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; }
+        h2 { font-size: 2rem; color: var(--accent-cyan); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        
+        .brand-text { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; }
+        .brand-text .dot { color: var(--accent-cyan); }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: white; /* Fallback for print if needed */
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 20px;
+            margin-bottom: 2rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255, 0.03);
+            border: 1px solid rgba(255,255,255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer p { margin: 0; font-size: 0.9rem; }
+        .footer a { color: var(--accent-cyan); text-decoration: none; }
+
+        /* Iconos de Listas */
+        ul { list-style: none; margin-bottom: 1.5rem; }
+        ul li { margin-bottom: 10px; color: var(--text-secondary); display: flex; align-items: flex-start; gap: 10px; }
+        ul li i { color: var(--accent-purple); margin-top: 5px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Controles no imprimibles -->
+    <div class="controls no-print">
+        <button class="btn" onclick="window.print()">
+            <i class="fas fa-file-pdf"></i> Exportar a PDF (Ctrl+P)
+        </button>
+        <button class="btn btn-alt" onclick="copyToWord()">
+            <i class="fas fa-file-word"></i> Copiar texto para Word
+        </button>
+    </div>
+    
+    <p class="no-print" style="color:white; text-align:center; max-width: 600px; margin-bottom: 30px;">
+        <em>Instrucciones:</em> Presiona "Exportar a PDF". En la configuración de impresión de Chrome, asegúrate de habilitar <strong>"Gráficos de fondo" (Background graphics)</strong> y establecer márgenes en <strong>Ninguno (None)</strong> para que el diseño oscuro se guarde impecable.
+    </p>
+
+    <!-- PÁGINA 1: PORTADA Y VALOR -->
+    <div class="page" id="brochure-content">
+        <div class="content">
+            <!-- Header Logo -->
+            <div style="text-align: right; margin-bottom: 40px;">
+                <span class="brand-text">jfaundez<span class="dot">.tech</span></span>
+            </div>
+
+            <!-- Titulo Principal -->
+            <div style="margin-top: 60px;">
+                <h3 style="color: var(--accent-purple); letter-spacing: 2px; text-transform: uppercase; font-size: 1rem; margin-bottom: 10px;">Propuesta de Valor Comercial</h3>
+                <h1>Soluciones <br>Tecnológicas <span class="text-gradient">360°</span></h1>
+                <p style="font-size: 1.3rem; max-width: 80%; color: #fff;">Lleva tu negocio al futuro digital. Centraliza tu desarrollo web, automatización e infraestructura con un solo experto estratégico.</p>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 50px;">
+                <h3 style="color: white; margin-bottom: 10px;">El Problema Actual de las Pymes:</h3>
+                <p style="margin: 0;">Lidiar con un programador por un lado, una agencia de marketing por el otro y técnicos de soporte aparte es ineficiente y costoso.</p>
+                <h3 style="color: var(--accent-cyan); margin-top: 20px; margin-bottom: 10px;">Mi Propuesta:</h3>
+                <p style="margin: 0; color: white;">Soy tu aliado tecnológico 360°. Dirigir un negocio ya es difícil, delega toda la estructura tecnológica en mis manos para que te enfoques exclusivamente en vender y crecer.</p>
+            </div>
+
+            <!-- Grid de Servicios (Pag 1) -->
+            <h2>Ecosistema de Servicios</h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Web y E-Commerce</h3>
+                    <p>Construyo plataformas de alto rendimiento, escalables y orientadas a la conversión, potenciadas con diseño UX intuitivo y moderno.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Automatizo flujos de trabajo repetitivos e integro chatbots avanzados 24/7 para que ahorres tiempo y dinero en atención.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Marketing de Datos</h3>
+                    <p>Optimizo campañas precisas para maximizar tu ROI conectando datos de Google Analytics, Search Console y Meta Ads.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Soporte TI 360</h3>
+                    <p>Continuidad operativa garantizada. Mantenimiento preventivo corporativo y reparación avanzada.</p>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                <p><strong>Juan Ignacio Faundez</strong> | Ing. en Computación e Informática</p>
+                <p><a href="https://jfaundez.tech" target="_blank">www.jfaundez.tech</a> | WhatsApp: +56 9 8467 5396</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToWord() {
+            // Un truquito simple para seleccionar el texto si alguien lo quiere en un docx en blanco
+            const range = document.createRange();
+            range.selectNode(document.getElementById("brochure-content"));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            alert("¡El texto y la estructura se han copiado al portapapeles!\nAbre un archivo de Microsoft Word en blanco y presiona 'Pegar' (Ctrl+V) o 'Pegar manteniendo formato de origen' para que se conserve ordenado.");
+        }
+    </script>
+</body>
+</html>
