@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+        <!-- Background Gradients -->
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0a1024"/>
+            <stop offset="100%" stop-color="#02040a"/>
+        </linearGradient>
+        
+        <!-- Cyber / Tech Gradient -->
+        <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe"/>
+            <stop offset="50%" stop-color="#4facfe"/>
+            <stop offset="100%" stop-color="#8e2de2"/>
+        </linearGradient>
+
+        <!-- Intensive Glow Filter -->
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="12" result="blur1"/>
+            <feGaussianBlur stdDeviation="6" result="blur2"/>
+            <feMerge>
+                <feMergeNode in="blur1"/>
+                <feMergeNode in="blur2"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Subtle Glow Filter for background elements -->
+        <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- 1. Background Shell -->
+    <rect width="512" height="512" rx="100" fill="url(#bgGrad)"/>
+    <rect x="16" y="16" width="480" height="480" rx="84" fill="none" stroke="rgba(0, 242, 254, 0.05)" stroke-width="2"/>
+    
+    <!-- 2. Octagonal Tech Border (Processor Socket vibe) -->
+    <polygon points="120,60 392,60 452,120 452,392 392,452 120,452 60,392 60,120" fill="none" stroke="rgba(0, 242, 254, 0.15)" stroke-width="4"/>
+    <polygon points="126,72 386,72 440,126 440,386 386,440 126,440 72,386 72,126" fill="none" stroke="rgba(142,45,226, 0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+    <polygon points="135,85 377,85 427,135 427,377 377,427 135,427 85,377 85,135" fill="#040918" stroke="rgba(0, 242, 254, 0.05)" stroke-width="2" />
+
+    <!-- 3. Background Data Tracks (PCB Traces) -->
+    <g stroke="rgba(0, 242, 254, 0.2)" stroke-width="3" fill="none" stroke-linejoin="round">
+        <polyline points="0,156 50,156 100,206 100,250" />
+        <circle cx="100" cy="250" r="4" fill="rgba(0, 242, 254, 0.2)"/>
+        
+        <polyline points="512,356 460,356 400,296 400,200" />
+        <circle cx="400" cy="200" r="4" fill="rgba(0, 242, 254, 0.2)"/>
+        
+        <polyline points="267,0 267,50 300,83 350,83" />
+        <circle cx="350" cy="83" r="4" fill="rgba(0, 242, 254, 0.2)"/>
+        
+        <polyline points="201,512 201,450 150,399 100,399" />
+        <circle cx="100" cy="399" r="4" fill="rgba(0, 242, 254, 0.2)"/>
+    </g>
+
+    <!-- 4. CORE MONOGRAM: JF -->
+    
+    <!-- A. Neon Aura Base -->
+    <g filter="url(#glow)">
+        <!-- J+F Main Body (Vertical stem + top F crossbar + J hook) -->
+        <path d="M 341 156 L 267 156 L 267 326 L 237 356 L 201 356 L 171 326" fill="none" stroke="url(#cyberGrad)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- F Middle Crossbar -->
+        <path d="M 267 236 L 311 236" fill="none" stroke="url(#cyberGrad)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <!-- Nodes -->
+        <circle cx="341" cy="156" r="22" fill="url(#cyberGrad)" />
+        <circle cx="171" cy="326" r="22" fill="url(#cyberGrad)" />
+        <circle cx="311" cy="236" r="22" fill="url(#cyberGrad)" />
+    </g>
+
+    <!-- B. Solid Inner Core (Fiber Optic / Neon Tube effect) -->
+    <!-- J+F Main Body -->
+    <path d="M 341 156 L 267 156 L 267 326 L 237 356 L 201 356 L 171 326" fill="none" stroke="#e0ffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- F Middle Crossbar -->
+    <path d="M 267 236 L 311 236" fill="none" stroke="#e0ffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- C. Core Details on Nodes -->
+    <circle cx="341" cy="156" r="9" fill="#e0ffff" />
+    <circle cx="171" cy="326" r="9" fill="#e0ffff" />
+    <circle cx="311" cy="236" r="9" fill="#e0ffff" />
+
+    <!-- D. PCB Holes in Nodes to complete the tech aesthetic -->
+    <circle cx="341" cy="156" r="4" fill="#02040a" />
+    <circle cx="171" cy="326" r="4" fill="#02040a" />
+    <circle cx="311" cy="236" r="4" fill="#02040a" />
+
+    <!-- E. Tech Point (.tech dot at the bottom right) -->
+    <circle cx="370" cy="356" r="16" fill="url(#cyberGrad)" filter="url(#glow)"/>
+    <circle cx="370" cy="356" r="6" fill="#e0ffff"/>
+
+    <!-- 5. Fine Data Particles (Flowing light points) -->
+    <g fill="#ffffff" filter="url(#softGlow)">
+        <circle cx="267" cy="196" r="2.5" />
+        <circle cx="267" cy="286" r="2.5" />
+        <circle cx="219" cy="356" r="2.5" />
+        <circle cx="289" cy="156" r="2.5" />
+    </g>
+</svg>

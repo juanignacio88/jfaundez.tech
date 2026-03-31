@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+        <!-- Intense Cyber Gradient -->
+        <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe">
+                <animate attributeName="stop-color" values="#00f2fe;#8e2de2;#00f2fe" dur="4s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stop-color="#8e2de2">
+                <animate attributeName="stop-color" values="#8e2de2;#00f2fe;#8e2de2" dur="4s" repeatCount="indefinite" />
+            </stop>
+        </linearGradient>
+
+        <!-- Glow effect -->
+        <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="15" result="blur1"/>
+            <feGaussianBlur stdDeviation="8" result="blur2"/>
+            <feMerge>
+                <feMergeNode in="blur1"/>
+                <feMergeNode in="blur2"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- JF Ultimate Monogram (Isotipo Solo) -->
+    <g transform="translate(256, 256)" filter="url(#glow)">
+        
+        <!-- Main 'J' and 'F' Path Fusion -->
+        <!-- Shared central stem + J hook + F bars -->
+        <path d="
+            M -80 -140 L 80 -140        /* F Top bar */
+            M 0 -140 L 0 100            /* Shared Stem */
+            M 0 100 C 0 150 -60 150 -80 130 /* J Hook (curved) */
+            M 0 -10 L 60 -10            /* F Middle bar */
+        " fill="none" stroke="url(#cyberGrad)" stroke-width="45" stroke-linecap="round" stroke-linejoin="round">
+            <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" dur="2s" />
+        </path>
+        
+        <!-- Tech Details: Data Nodes at each terminal -->
+        <circle cx="-80" cy="-140" r="12" fill="#fff" />
+        <circle cx="80" cy="-140" r="12" fill="#fff" />
+        <circle cx="-80" cy="130" r="12" fill="#fff" />
+        <circle cx="60" cy="-10" r="12" fill="#fff" />
+        
+        <!-- Inner Fiber Optic Core -->
+        <path d="
+            M -80 -140 L 80 -140 
+            M 0 -140 L 0 100 
+            M 0 100 C 0 150 -60 150 -80 130 
+            M 0 -10 L 60 -10
+        " fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
+        
+    </g>
+</svg>
