@@ -874,6 +874,8 @@ h1, h2, h3, h4 {
 
 .footer-links {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
 }
 
@@ -1167,6 +1169,11 @@ h1, h2, h3, h4 {
         grid-column: span 1;
     }
     .card-zoffoli { grid-column: span 2; }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1207,5 +1214,14 @@ h1, h2, h3, h4 {
     }
     .card-zoffoli, .card-newopenbox, .card-maske, .card-marilyn, .card-donharina {
         grid-column: span 1;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .footer-links {
+        gap: 1rem;
     }
 }
