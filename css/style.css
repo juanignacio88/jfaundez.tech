@@ -357,12 +357,61 @@ h1, h2, h3, h4 {
     }
 }
 
-/* Fixed Contact Button */
-.fixed-contact-btn {
+/* Fixed Top Actions Container */
+.fixed-top-actions {
     position: fixed;
     top: 20px;
     right: 30px;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(10, 10, 10, 0.6);
+    padding: 6px 6px 6px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.fixed-service-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-decoration: none;
+    line-height: 1;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.fixed-service-link:hover {
+    transform: translateY(-2px);
+}
+
+.fixed-service-link .service-subtitle {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.fixed-service-link .brand-text {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-transform: lowercase;
+    letter-spacing: -1px;
+}
+
+.fixed-service-link .dot {
+    color: var(--accent-cyan);
+}
+
+/* Fixed Contact Button */
+.fixed-contact-btn {
+    position: relative;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
     color: white;
     border: none;
@@ -1199,6 +1248,26 @@ h1, h2, h3, h4 {
     
     .cta-buttons {
         flex-direction: column;
+    }
+
+    .fixed-top-actions {
+        top: 15px;
+        right: 15px;
+        gap: 10px;
+        padding: 4px 4px 4px 12px;
+    }
+
+    .fixed-service-link .brand-text {
+        font-size: 0.9rem;
+    }
+
+    .fixed-service-link .service-subtitle {
+        font-size: 0.55rem;
+    }
+
+    .fixed-contact-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
     }
     
     .btn {
